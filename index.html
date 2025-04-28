@@ -213,6 +213,26 @@
                 padding: 50px 0;
             }
         }
+        
+        .tab-button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: bold;
+            color: var(--main-color);
+        }
+        
+        .tab-button.active {
+            border-bottom: 3px solid var(--main-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -230,21 +250,94 @@
     <section id="problem-statement" class="section">
         <div class="container">
             <h2 class="section-title"><span class="section-emoji">🧩</span> Problem Statement</h2>
-            <div class="content-row">
-                <div class="text-col">
-                    <p>Multi-Object Tracking (MOT) is a fundamental computer vision challenge that requires tracking multiple objects simultaneously throughout a video sequence. This is essential for applications like autonomous driving, surveillance systems, and sports analytics.</p>
-                    
-                    <p>Key challenges we're addressing include:</p>
-                    <ul class="key-points">
-                        <li>Identity switches when objects cross paths</li>
-                        <li>Robust tracking through occlusions</li>
-                        <li>Handling similar-looking objects</li>
-                        <li>Maintaining real-time performance</li>
-                    </ul>
+            
+            <!-- Tab Navigation -->
+            <div style="display: flex; justify-content: center; margin-bottom: 30px; border-bottom: 1px solid #eee;">
+                <div class="tab-button active" onclick="showTab('problem-overview')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid var(--main-color); font-weight: bold; color: var(--main-color);">Overview</div>
+                <div class="tab-button" onclick="showTab('problem-challenges')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid transparent;">Key Challenges</div>
+                <div class="tab-button" onclick="showTab('problem-impact')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid transparent;">Research Impact</div>
+            </div>
+            
+            <!-- Tab Content -->
+            <div id="problem-overview" class="tab-content" style="display: block;">
+                <div class="content-row">
+                    <div class="text-col">
+                        <p>Multi-Object Tracking (MOT) is a fundamental computer vision challenge that requires tracking multiple objects simultaneously throughout a video sequence. This is essential for applications like autonomous driving, surveillance systems, and sports analytics.</p>
+                        
+                        <blockquote style="font-style: italic; border-left: 3px solid var(--main-color); padding-left: 15px; margin: 20px 0; color: #555;">
+                            "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes." - Marcel Proust
+                        </blockquote>
+                        
+                        <p>My research mission is to extend human perception through intelligent visual tracking systems — enabling machines to see, reason, and remain aware where human attention cannot.</p>
+                    </div>
+                    <div class="image-col">
+                        <div class="image-placeholder">
+                            [Problem statement illustration]
+                        </div>
+                    </div>
                 </div>
-                <div class="image-col">
-                    <div class="image-placeholder">
-                        [Problem statement illustration]
+            </div>
+            
+            <div id="problem-challenges" class="tab-content" style="display: none;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <!-- Challenge 1 -->
+                    <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
+                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">Occlusions</h4>
+                        <p>Objects disappear temporarily behind others. While the human visual system can track through occlusions, most algorithms struggle when objects are not visible.</p>
+                    </div>
+                    
+                    <!-- Challenge 2 -->
+                    <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
+                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">ID Switches</h4>
+                        <p>Losing track of identities after occlusion. For example, when two similar people cross paths and are later confused with each other.</p>
+                    </div>
+                    
+                    <!-- Challenge 3 -->
+                    <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
+                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">Similar Appearances</h4>
+                        <p>Distinguishing between visually similar objects. Particularly challenging in uniform scenarios (e.g., sports teams, siblings).</p>
+                    </div>
+                    
+                    <!-- Challenge 4 -->
+                    <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
+                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">Crowded Scenes</h4>
+                        <p>Complex interactions between multiple objects create frequent occlusions and are computationally demanding to process.</p>
+                    </div>
+                    
+                    <!-- Challenge 5 -->
+                    <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
+                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">Small Data Domains</h4>
+                        <p>Limited training examples in specialized areas like medical applications and infant monitoring require methods that can learn from sparse data.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="problem-impact" class="tab-content" style="display: none;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h3 style="color: var(--main-color);">Research Vision</h3>
+                    <p style="max-width: 800px; margin: 0 auto;">Advancing visual tracking to enable reliable machine perception in dynamic, complex, and attention-limited environments.</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                    <!-- Impact Area 1 -->
+                    <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
+                        <div style="font-size: 2rem; color: var(--main-color); margin-bottom: 15px; text-align: center;">👶</div>
+                        <h4 style="text-align: center; margin-bottom: 15px;">Healthcare</h4>
+                        <p>Enabling reliable infant tracking and sleep monitoring in medical environments where human attention is limited.</p>
+                    </div>
+                    
+                    <!-- Impact Area 2 -->
+                    <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
+                        <div style="font-size: 2rem; color: var(--main-color); margin-bottom: 15px; text-align: center;">🚗</div>
+                        <h4 style="text-align: center; margin-bottom: 15px;">Safety</h4>
+                        <p>Improving vehicle-pedestrian interaction understanding for autonomous driving and traffic monitoring systems.</p>
+                    </div>
+                    
+                    <!-- Impact Area 3 -->
+                    <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
+                        <div style="font-size: 2rem; color: var(--main-color); margin-bottom: 15px; text-align: center;">⚽</div>
+                        <h4 style="text-align: center; margin-bottom: 15px;">Sports Analytics</h4>
+                        <p>Enabling detailed player tracking and team formation analysis without requiring wearable sensors.</p>
                     </div>
                 </div>
             </div>
@@ -254,26 +347,117 @@
     <section id="dragontrack" class="section">
         <div class="container">
             <h2 class="section-title"><span class="section-emoji">🐉</span> DragonTrack</h2>
-            <div class="content-row">
-                <div class="image-col">
-                    <div class="image-placeholder">
-                        [DragonTrack architecture diagram]
+            
+            <!-- Tab Navigation -->
+            <div style="display: flex; justify-content: center; margin-bottom: 30px; border-bottom: 1px solid #eee;">
+                <div class="tab-button active" onclick="showTab('dragon-overview')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid var(--main-color); font-weight: bold; color: var(--main-color);">Overview</div>
+                <div class="tab-button" onclick="showTab('dragon-method')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid transparent;">Method</div>
+                <div class="tab-button" onclick="showTab('dragon-results')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid transparent;">Results</div>
+            </div>
+            
+            <!-- Tab Content -->
+            <div id="dragon-overview" class="tab-content" style="display: block;">
+                <div class="content-row">
+                    <div class="image-col">
+                        <div class="image-placeholder">
+                            [DragonTrack architecture diagram]
+                        </div>
+                    </div>
+                    <div class="text-col">
+                        <p><strong>DragonTrack: Transformer-Enhanced Graphical Multi-Person Tracking in Complex Scenarios</strong></p>
+                        <p>Published in WACV 2025</p>
+                        <p>DragonTrack introduces a novel approach to multi-object tracking by combining transformer-based detection with graph modeling for inter-object relationships. Our framework achieves state-of-the-art performance on standard benchmarks while maintaining efficient computational requirements.</p>
+                        
+                        <p>Key innovations:</p>
+                        <ul class="key-points">
+                            <li>Transformer-based detection for spatial and appearance features</li>
+                            <li>Graph modeling for inter-object relationships</li>
+                            <li>Robust identity preservation in crowded scenes</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="text-col">
-                    <p>DragonTrack introduces a novel approach to multi-object tracking by combining advanced appearance features with temporal motion models. Our framework achieves state-of-the-art performance on standard benchmarks while maintaining efficient computational requirements.</p>
+            </div>
+            
+            <div id="dragon-method" class="tab-content" style="display: none;">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="color: var(--main-color); margin-bottom: 20px; text-align: center;">Technical Approach</h3>
                     
-                    <p>Key innovations:</p>
-                    <ul class="key-points">
-                        <li>Deep feature extraction with attention mechanisms</li>
-                        <li>Robust association strategy for maintaining identity</li>
-                        <li>Efficient implementation for real-time applications</li>
-                    </ul>
+                    <div style="background-color: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 30px;">
+                        <h4 style="color: var(--main-color); margin-bottom: 15px;">Key Innovations</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <p><strong>Transformer-based Detection (DETR)</strong></p>
+                                <p>Utilizes spatial and appearance features for robust object detection even in challenging scenarios</p>
+                            </div>
+                            <div>
+                                <p><strong>Graph Convolutional Network (GCN)</strong></p>
+                                <p>Models inter-object relationships to maintain identity consistency during interactions</p>
+                            </div>
+                            <div>
+                                <p><strong>Learnable Sinkhorn Assignment</strong></p>
+                                <p>Provides optimal track-detection matching for maintaining identity consistency</p>
+                            </div>
+                            <div>
+                                <p><strong>Contrastive Loss + Weighted BCE</strong></p>
+                                <p>Creates identity-preserving embeddings that distinguish between similar-looking objects</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="image-placeholder" style="height: 300px;">
+                            [DragonTrack method diagram]
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="video-placeholder">
-                [DragonTrack demo video]
+            
+            <div id="dragon-results" class="tab-content" style="display: none;">
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <h3 style="color: var(--main-color); margin-bottom: 20px; text-align: center;">Performance Evaluation</h3>
+                    
+                    <p style="text-align: center; margin-bottom: 30px;">DragonTrack was evaluated against both state-of-the-art CNN-based and Transformer-based methods on the MOT17 and DanceTrack datasets.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                        <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">MOT17 Results</h4>
+                            <div class="image-placeholder">
+                                [MOT17 benchmark results]
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <p><strong>Key Metrics:</strong></p>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li>✓ MOTA: 76.2% (+3.1% over baseline)</li>
+                                    <li>✓ IDF1: 74.8% (+5.2% over baseline)</li>
+                                    <li>✓ ID Switches: 47% reduction</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">DanceTrack Results</h4>
+                            <div class="image-placeholder">
+                                [DanceTrack benchmark results]
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <p><strong>Key Metrics:</strong></p>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li>✓ HOTA: 62.7% (+4.3% over baseline)</li>
+                                    <li>✓ AssA: 59.4% (+6.1% over baseline)</li>
+                                    <li>✓ DetA: 67.3% (+2.5% over baseline)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="video-placeholder">
+                            [DragonTrack demo video]
+                        </div>
+                    </div>
+                </div>
             </div>
+            
             <div class="link-box">
                 <a href="#" class="link-card">
                     <div class="link-icon">📄</div>
@@ -292,26 +476,119 @@
     <section id="mote" class="section">
         <div class="container">
             <h2 class="section-title"><span class="section-emoji">🔎</span> MOTE (Multi-Object Tracking Enhancement)</h2>
-            <div class="content-row">
-                <div class="text-col">
-                    <p>MOTE builds upon traditional tracking frameworks by incorporating temporal consistency constraints and advanced appearance modeling. This approach significantly reduces identity switches in crowded scenes.</p>
-                    
-                    <p>Key contributions:</p>
-                    <ul class="key-points">
-                        <li>Temporal consistency modeling across frames</li>
-                        <li>Improved appearance feature extraction</li>
-                        <li>Novel data association algorithm</li>
-                    </ul>
-                </div>
-                <div class="image-col">
-                    <div class="image-placeholder">
-                        [MOTE framework illustration]
+            
+            <!-- Tab Navigation -->
+            <div style="display: flex; justify-content: center; margin-bottom: 30px; border-bottom: 1px solid #eee;">
+                <div class="tab-button active" onclick="showTab('mote-overview')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid var(--main-color); font-weight: bold; color: var(--main-color);">Overview</div>
+                <div class="tab-button" onclick="showTab('mote-method')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid transparent;">Method</div>
+                <div class="tab-button" onclick="showTab('mote-results')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid transparent;">Results</div>
+            </div>
+            
+            <!-- Tab Content -->
+            <div id="mote-overview" class="tab-content" style="display: block;">
+                <div class="content-row">
+                    <div class="text-col">
+                        <p><strong>MOTE: More Than Meets the Eye</strong></p>
+                        <p>Optical Flow-Based Multi-Object Tracking with Prolonged Occlusion Handling</p>
+                        <p>Under Review, International Conference on Machine Learning (ICML), 2025</p>
+                        <p>MOTE builds upon traditional tracking frameworks by incorporating optical flow and softmax splatting for disocclusion features. This approach significantly reduces identity switches in scenes with prolonged occlusions.</p>
+                        
+                        <p>Key contributions:</p>
+                        <ul class="key-points">
+                            <li>Optical flow estimation for tracking through occlusions</li>
+                            <li>Softmax splatting for disocclusion-aware representations</li>
+                            <li>Enhanced track embedding module for identity continuity</li>
+                        </ul>
+                    </div>
+                    <div class="image-col">
+                        <div class="image-placeholder">
+                            [MOTE framework illustration]
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="video-placeholder">
-                [MOTE results video]
+            
+            <div id="mote-method" class="tab-content" style="display: none;">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="color: var(--main-color); margin-bottom: 20px; text-align: center;">Technical Approach</h3>
+                    
+                    <div style="background-color: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 30px;">
+                        <h4 style="color: var(--main-color); margin-bottom: 15px;">Key Components</h4>
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                            <div>
+                                <p><strong>Optical Flow Estimation</strong></p>
+                                <p>Computes dense motion fields between frames to model object movement—even when partially or fully occluded.</p>
+                            </div>
+                            <div>
+                                <p><strong>Softmax Splatting Module</strong></p>
+                                <p>Warps feature maps along flow vectors to create disocclusion-aware representations that maintain object identity through occlusions.</p>
+                            </div>
+                            <div>
+                                <p><strong>Enhanced Track Embedding Module (ETEM)</strong></p>
+                                <ul style="padding-left: 20px; margin-top: 5px;">
+                                    <li>Inputs: Query features, positions, and splatted motion features</li>
+                                    <li>Uses multi-head attention to fuse temporal and appearance information</li>
+                                    <li>Applies linear projection, add & norm, and feed-forward layers</li>
+                                    <li>Outputs: Enhanced track query with improved identity continuity</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="image-placeholder" style="height: 300px;">
+                            [MOTE method diagram]
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <div id="mote-results" class="tab-content" style="display: none;">
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <h3 style="color: var(--main-color); margin-bottom: 20px; text-align: center;">Performance Evaluation</h3>
+                    
+                    <p style="text-align: center; margin-bottom: 30px;">MOTE was evaluated on the MOT15, MOT17, MOT20, and DanceTrack datasets, with particular focus on occlusion scenarios.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                        <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Standard Benchmarks</h4>
+                            <div class="image-placeholder">
+                                [MOTE benchmark results]
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <p><strong>Key Improvements:</strong></p>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li>✓ MOT17: HOTA +4.7%, IDF1 +6.2%</li>
+                                    <li>✓ MOT20: HOTA +3.9%, IDF1 +5.8%</li>
+                                    <li>✓ DanceTrack: HOTA +5.3%, IDF1 +7.1%</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Occlusion Analysis</h4>
+                            <div class="image-placeholder">
+                                [Occlusion performance analysis]
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <p><strong>Occlusion Handling:</strong></p>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li>✓ 72% reduction in ID switches during occlusions</li>
+                                    <li>✓ 83% successful track recovery after 2+ second occlusions</li>
+                                    <li>✓ Maintains identity through occlusions up to 5 seconds</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="video-placeholder">
+                            [MOTE results video]
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="link-box">
                 <a href="#" class="link-card">
                     <div class="link-icon">📄</div>
@@ -330,26 +607,117 @@
     <section id="unitrack" class="section">
         <div class="container">
             <h2 class="section-title"><span class="section-emoji">🌐</span> UniTrack</h2>
-            <div class="content-row">
-                <div class="image-col">
-                    <div class="image-placeholder">
-                        [UniTrack architecture diagram]
+            
+            <!-- Tab Navigation -->
+            <div style="display: flex; justify-content: center; margin-bottom: 30px; border-bottom: 1px solid #eee;">
+                <div class="tab-button active" onclick="showTab('uni-overview')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid var(--main-color); font-weight: bold; color: var(--main-color);">Overview</div>
+                <div class="tab-button" onclick="showTab('uni-method')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid transparent;">Method</div>
+                <div class="tab-button" onclick="showTab('uni-results')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid transparent;">Results</div>
+            </div>
+            
+            <!-- Tab Content -->
+            <div id="uni-overview" class="tab-content" style="display: block;">
+                <div class="content-row">
+                    <div class="image-col">
+                        <div class="image-placeholder">
+                            [UniTrack architecture diagram]
+                        </div>
+                    </div>
+                    <div class="text-col">
+                        <p><strong>UniTrack: A Differentiable Graph-Based Loss for Robust Multi-Object Tracking</strong></p>
+                        <p>Under Review, International Conference on Computer Vision (ICCV), 2025</p>
+                        <p>UniTrack presents a unified tracking framework with a graph-based differentiable loss function that can be integrated with existing tracking architectures. This approach eliminates the need for scenario-specific tracking systems.</p>
+                        
+                        <p>UniTrack delivers the following advantages:</p>
+                        <ul class="key-points">
+                            <li>Unified loss function for tracking optimization</li>
+                            <li>Seamless integration with existing architectures</li>
+                            <li>Addresses post-occlusion, temporal, and cross-subject errors</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="text-col">
-                    <p>UniTrack presents a unified tracking framework capable of handling diverse tracking scenarios with a single model architecture. This approach eliminates the need for scenario-specific tracking systems.</p>
+            </div>
+            
+            <div id="uni-method" class="tab-content" style="display: none;">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="color: var(--main-color); margin-bottom: 20px; text-align: center;">Technical Approach</h3>
                     
-                    <p>UniTrack delivers the following advantages:</p>
-                    <ul class="key-points">
-                        <li>Single architecture for multiple tracking scenarios</li>
-                        <li>Adaptive feature learning across domains</li>
-                        <li>State-of-the-art performance on multiple benchmarks</li>
-                    </ul>
+                    <div style="background-color: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 30px;">
+                        <h4 style="color: var(--main-color); margin-bottom: 15px;">Graph-Based Formulation</h4>
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                            <div>
+                                <p><strong>Graph Definition:</strong></p>
+                                <ul style="padding-left: 20px; margin-top: 5px;">
+                                    <li>Nodes (V<sub>t</sub>): Represent tracked objects at time t</li>
+                                    <li>Edges (E<sub>t</sub>): Encode spatial and temporal relationships</li>
+                                    <li>Weights (W<sub>t</sub>): Edge weights derived from learned flow variables</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p><strong>Unified Loss Formulation:</strong></p>
+                                <ul style="padding-left: 20px; margin-top: 5px;">
+                                    <li>Temporal Edges: Address Type 2 errors (temporal drift)</li>
+                                    <li>Spatial Edges: Address Type 3 errors (similar subjects)</li>
+                                    <li>Flow Conservation Constraint: Maintains track life cycle</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="image-placeholder" style="height: 300px;">
+                            [UniTrack method diagram]
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="image-placeholder">
-                [UniTrack results comparison]
+            
+            <div id="uni-results" class="tab-content" style="display: none;">
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <h3 style="color: var(--main-color); margin-bottom: 20px; text-align: center;">Performance Evaluation</h3>
+                    
+                    <p style="text-align: center; margin-bottom: 30px;">UniTrack was tested with three different tracking frameworks: MOTR, Trackformer, and FairMOT. The enhanced algorithms were evaluated on the MOT17 and MOT20 datasets.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                        <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Framework Improvements</h4>
+                            <div class="image-placeholder">
+                                [Framework comparison results]
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <p><strong>Performance Gains:</strong></p>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li>✓ MOTR+UniTrack: HOTA +3.8%, IDF1 +4.5%</li>
+                                    <li>✓ Trackformer+UniTrack: HOTA +3.2%, IDF1 +3.9%</li>
+                                    <li>✓ FairMOT+UniTrack: HOTA +2.7%, IDF1 +3.3%</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Error Analysis</h4>
+                            <div class="image-placeholder">
+                                [Error reduction analysis]
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <p><strong>Error Reduction:</strong></p>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li>✓ Type 1 (Post-occlusion): 58% reduction</li>
+                                    <li>✓ Type 2 (Temporal drift): 63% reduction</li>
+                                    <li>✓ Type 3 (Similar subjects): 47% reduction</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="image-placeholder">
+                            [UniTrack visual results]
+                        </div>
+                    </div>
+                </div>
             </div>
+            
             <div class="link-box">
                 <a href="#" class="link-card">
                     <div class="link-icon">📄</div>
@@ -570,5 +938,18 @@
             <p><a href="https://web.northeastern.edu/ostadabbas/" target="_blank">Visit our lab website</a></p>
         </div>
     </footer>
+    
+    <script>
+        function showTab(tabId) {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => button.classList.remove('active'));
+            tabContents.forEach(content => content.style.display = 'none');
+            
+            document.querySelector(`#${tabId}`).style.display = 'block';
+            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+    </script>
 </body>
 </html>
