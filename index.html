@@ -233,6 +233,57 @@
         .tab-content.active {
             display: block;
         }
+        
+        .lab-contact-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .lab-group-image {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 100;
+        }
+        
+        .lab-contact-container:hover .lab-group-image {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Application card hover effect */
+        .app-card {
+            position: relative;
+            overflow: visible !important;
+        }
+        
+        .app-media {
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 300px;
+            max-height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 100;
+            object-fit: cover;
+        }
+        
+        .app-card:hover .app-media {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
@@ -271,9 +322,7 @@
                         <p>My research mission is to extend human perception through intelligent visual tracking systems — enabling machines to see, reason, and remain aware where human attention cannot.</p>
                     </div>
                     <div class="image-col">
-                        <div class="image-placeholder">
-                            [Problem statement illustration]
-                        </div>
+                        <img src="assets/problem_statement/occlussions.png" alt="Occlusion challenges in tracking" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
@@ -282,31 +331,46 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                     <!-- Challenge 1 -->
                     <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">Occlusions</h4>
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img src="assets/problem_statement/occlussions.png" alt="Occlusion challenges" style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px;">
+                        </div>
+                        <h4 style="color: var(--main-color); margin-bottom: 15px;">Occlusions</h4>
                         <p>Objects disappear temporarily behind others. While the human visual system can track through occlusions, most algorithms struggle when objects are not visible.</p>
                     </div>
                     
                     <!-- Challenge 2 -->
                     <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">ID Switches</h4>
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img src="assets/problem_statement/ids.png" alt="ID switch challenges" style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px;">
+                        </div>
+                        <h4 style="color: var(--main-color); margin-bottom: 15px;">ID Switches</h4>
                         <p>Losing track of identities after occlusion. For example, when two similar people cross paths and are later confused with each other.</p>
                     </div>
                     
                     <!-- Challenge 3 -->
                     <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">Similar Appearances</h4>
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img src="assets/problem_statement/similar_triplets.png" alt="Similar appearance challenges" style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px;">
+                        </div>
+                        <h4 style="color: var(--main-color); margin-bottom: 15px;">Similar Appearances</h4>
                         <p>Distinguishing between visually similar objects. Particularly challenging in uniform scenarios (e.g., sports teams, siblings).</p>
                     </div>
                     
                     <!-- Challenge 4 -->
                     <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">Crowded Scenes</h4>
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img src="assets/problem_statement/crowded.png" alt="Crowded scene challenges" style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px;">
+                        </div>
+                        <h4 style="color: var(--main-color); margin-bottom: 15px;">Crowded Scenes</h4>
                         <p>Complex interactions between multiple objects create frequent occlusions and are computationally demanding to process.</p>
                     </div>
                     
                     <!-- Challenge 5 -->
                     <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                        <h4 style="color: var(--main-color); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">Small Data Domains</h4>
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img src="assets/problem_statement/smallsleep.png" alt="Small data domain challenges" style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 5px;">
+                        </div>
+                        <h4 style="color: var(--main-color); margin-bottom: 15px;">Small Data Domains</h4>
                         <p>Limited training examples in specialized areas like medical applications and infant monitoring require methods that can learn from sparse data.</p>
                     </div>
                 </div>
@@ -321,21 +385,27 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
                     <!-- Impact Area 1 -->
                     <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                        <div style="font-size: 2rem; color: var(--main-color); margin-bottom: 15px; text-align: center;">👶</div>
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img src="assets/problem_statement/smallsleepbaby.png" alt="Healthcare applications" style="width: 100%; height: 180px; object-fit: cover; border-radius: 5px;">
+                        </div>
                         <h4 style="text-align: center; margin-bottom: 15px;">Healthcare</h4>
                         <p>Enabling reliable infant tracking and sleep monitoring in medical environments where human attention is limited.</p>
                     </div>
                     
                     <!-- Impact Area 2 -->
                     <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                        <div style="font-size: 2rem; color: var(--main-color); margin-bottom: 15px; text-align: center;">🚗</div>
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img src="assets/problem_statement/trafficped.png" alt="Safety applications" style="width: 100%; height: 180px; object-fit: cover; border-radius: 5px;">
+                        </div>
                         <h4 style="text-align: center; margin-bottom: 15px;">Safety</h4>
                         <p>Improving vehicle-pedestrian interaction understanding for autonomous driving and traffic monitoring systems.</p>
                     </div>
                     
                     <!-- Impact Area 3 -->
                     <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                        <div style="font-size: 2rem; color: var(--main-color); margin-bottom: 15px; text-align: center;">⚽</div>
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img src="assets/problem_statement/sports_mot.png" alt="Sports analytics applications" style="width: 100%; height: 180px; object-fit: cover; border-radius: 5px;">
+                        </div>
                         <h4 style="text-align: center; margin-bottom: 15px;">Sports Analytics</h4>
                         <p>Enabling detailed player tracking and team formation analysis without requiring wearable sensors.</p>
                     </div>
@@ -359,9 +429,7 @@
             <div id="dragon-overview" class="tab-content" style="display: block;">
                 <div class="content-row">
                     <div class="image-col">
-                        <div class="image-placeholder">
-                            [DragonTrack architecture diagram]
-                        </div>
+                        <img src="assets/dragontrack/dragontrack_block.png" alt="DragonTrack Architecture" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     </div>
                     <div class="text-col">
                         <p><strong>DragonTrack: Transformer-Enhanced Graphical Multi-Person Tracking in Complex Scenarios</strong></p>
@@ -405,9 +473,7 @@
                     </div>
                     
                     <div style="text-align: center;">
-                        <div class="image-placeholder" style="height: 300px;">
-                            [DragonTrack method diagram]
-                        </div>
+                        <img src="assets/dragontrack/dragontrack_method.png" alt="DragonTrack Method Diagram" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
@@ -421,9 +487,7 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
                         <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                             <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">MOT17 Results</h4>
-                            <div class="image-placeholder">
-                                [MOT17 benchmark results]
-                            </div>
+                            <img src="assets/dragontrack/dragontrack_results_1.png" alt="MOT17 benchmark results" style="width: 100%; height: auto; border-radius: 5px;">
                             <div style="margin-top: 15px;">
                                 <p><strong>Key Metrics:</strong></p>
                                 <ul style="list-style-type: none; padding-left: 0;">
@@ -436,9 +500,7 @@
                         
                         <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                             <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">DanceTrack Results</h4>
-                            <div class="image-placeholder">
-                                [DanceTrack benchmark results]
-                            </div>
+                            <img src="assets/dragontrack/dragontrack_results_1.png" alt="DanceTrack benchmark results" style="width: 100%; height: auto; border-radius: 5px;">
                             <div style="margin-top: 15px;">
                                 <p><strong>Key Metrics:</strong></p>
                                 <ul style="list-style-type: none; padding-left: 0;">
@@ -447,12 +509,6 @@
                                     <li>✓ DetA: 67.3% (+2.5% over baseline)</li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center;">
-                        <div class="video-placeholder">
-                            [DragonTrack demo video]
                         </div>
                     </div>
                 </div>
@@ -501,9 +557,7 @@
                         </ul>
                     </div>
                     <div class="image-col">
-                        <div class="image-placeholder">
-                            [MOTE framework illustration]
-                        </div>
+                        <img src="assets/mote/mote_block.png" alt="MOTE framework illustration" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
@@ -536,9 +590,7 @@
                     </div>
                     
                     <div style="text-align: center;">
-                        <div class="image-placeholder" style="height: 300px;">
-                            [MOTE method diagram]
-                        </div>
+                        <img src="assets/mote/mote_method.png" alt="MOTE method diagram" style="width: 80%; max-width: 600px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
@@ -552,9 +604,7 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
                         <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                             <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Standard Benchmarks</h4>
-                            <div class="image-placeholder">
-                                [MOTE benchmark results]
-                            </div>
+                            <img src="assets/mote/mote_results.png" alt="MOTE benchmark results" style="width: 100%; height: auto; border-radius: 5px;">
                             <div style="margin-top: 15px;">
                                 <p><strong>Key Improvements:</strong></p>
                                 <ul style="list-style-type: none; padding-left: 0;">
@@ -567,9 +617,7 @@
                         
                         <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                             <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Occlusion Analysis</h4>
-                            <div class="image-placeholder">
-                                [Occlusion performance analysis]
-                            </div>
+                            <img src="assets/mote/mote_results_2.png" alt="Occlusion performance analysis" style="width: 100%; height: auto; border-radius: 5px;">
                             <div style="margin-top: 15px;">
                                 <p><strong>Occlusion Handling:</strong></p>
                                 <ul style="list-style-type: none; padding-left: 0;">
@@ -578,12 +626,6 @@
                                     <li>✓ Maintains identity through occlusions up to 5 seconds</li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center;">
-                        <div class="video-placeholder">
-                            [MOTE results video]
                         </div>
                     </div>
                 </div>
@@ -619,9 +661,7 @@
             <div id="uni-overview" class="tab-content" style="display: block;">
                 <div class="content-row">
                     <div class="image-col">
-                        <div class="image-placeholder">
-                            [UniTrack architecture diagram]
-                        </div>
+                        <img src="assets/unitrack/unitrack_method.png" alt="UniTrack architecture diagram" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     </div>
                     <div class="text-col">
                         <p><strong>UniTrack: A Differentiable Graph-Based Loss for Robust Multi-Object Tracking</strong></p>
@@ -665,9 +705,7 @@
                     </div>
                     
                     <div style="text-align: center;">
-                        <div class="image-placeholder" style="height: 300px;">
-                            [UniTrack method diagram]
-                        </div>
+                        <img src="assets/unitrack/unitrack_method.png" alt="UniTrack method diagram" style="width: 80%; max-width: 600px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
@@ -681,9 +719,7 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
                         <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                             <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Framework Improvements</h4>
-                            <div class="image-placeholder">
-                                [Framework comparison results]
-                            </div>
+                            <img src="assets/unitrack/unitrack_results_1.png" alt="Framework comparison results" style="width: 100%; height: auto; border-radius: 5px;">
                             <div style="margin-top: 15px;">
                                 <p><strong>Performance Gains:</strong></p>
                                 <ul style="list-style-type: none; padding-left: 0;">
@@ -696,9 +732,7 @@
                         
                         <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                             <h4 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Error Analysis</h4>
-                            <div class="image-placeholder">
-                                [Error reduction analysis]
-                            </div>
+                            <img src="assets/unitrack/unitrack_results_2.png" alt="Error reduction analysis" style="width: 100%; height: auto; border-radius: 5px;">
                             <div style="margin-top: 15px;">
                                 <p><strong>Error Reduction:</strong></p>
                                 <ul style="list-style-type: none; padding-left: 0;">
@@ -711,9 +745,7 @@
                     </div>
                     
                     <div style="text-align: center;">
-                        <div class="image-placeholder">
-                            [UniTrack visual results]
-                        </div>
+                        <img src="assets/unitrack/unitrack_visual_results.png" alt="UniTrack visual results" style="width: 90%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
@@ -735,7 +767,7 @@
     
     <section id="lapa" class="section">
         <div class="container">
-            <h2 class="section-title"><span class="section-emoji">👀</span> Look Around and Pay Attention (LAPA)</h2>
+            <h2 class="section-title"><span class="section-emoji">👀</span> Look Around and Pay Attention (LAPA) <img src="assets/lapa/lapa_logo.png" alt="LAPA Logo" style="height: 50px; vertical-align: middle; margin-left: 10px;"></h2>
             <div class="content-row">
                 <div class="text-col">
                     <p>LAPA is our current research focus for NeurIPS, introducing a novel attention mechanism for multi-object tracking that combines local and global context information to improve tracking accuracy.</p>
@@ -750,13 +782,11 @@
                     <p><strong>Current Status:</strong> Under development for NeurIPS submission</p>
                 </div>
                 <div class="image-col">
-                    <div class="image-placeholder">
-                        [LAPA concept illustration]
-                    </div>
+                    <img src="assets/lapa/cross_view.png" alt="LAPA concept illustration" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                 </div>
             </div>
-            <div class="image-placeholder">
-                [Preliminary LAPA results]
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="assets/lapa/lapa.png" alt="Preliminary LAPA results" style="width: 80%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             </div>
             <div class="link-box">
                 <a href="#" class="link-card">
@@ -859,7 +889,8 @@
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px;">
                 <!-- Application Card 1 -->
-                <div style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                <div class="app-card" style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <img class="app-media" src="assets/real_world_app/aiwover.png" alt="AI Overhead View">
                     <div style="height: 160px; background-color: #ffecb3; display: flex; justify-content: center; align-items: center; font-size: 4rem;">
                         👶
                     </div>
@@ -870,7 +901,8 @@
                 </div>
                 
                 <!-- Application Card 2 -->
-                <div style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                <div class="app-card" style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <img class="app-media" src="assets/problem_statement/similar_triplets.png" alt="Similar Triplet Challenge">
                     <div style="height: 160px; background-color: #e3f2fd; display: flex; justify-content: center; align-items: center; font-size: 4rem;">
                         🧩
                     </div>
@@ -881,7 +913,8 @@
                 </div>
                 
                 <!-- Application Card 3 -->
-                <div style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                <div class="app-card" style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <img class="app-media" src="assets/problem_statement/smallsleep.png" alt="Small Sleep">
                     <div style="height: 160px; background-color: #e8f5e9; display: flex; justify-content: center; align-items: center; font-size: 4rem;">
                         💤
                     </div>
@@ -892,7 +925,11 @@
                 </div>
                 
                 <!-- Application Card 4 -->
-                <div style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                <div class="app-card" style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <video class="app-media" muted loop preload="metadata">
+                        <source src="assets/real_world_app/output1(1).mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <div style="height: 160px; background-color: #ffebee; display: flex; justify-content: center; align-items: center; font-size: 4rem;">
                         🚦
                     </div>
@@ -903,7 +940,11 @@
                 </div>
                 
                 <!-- Application Card 5 -->
-                <div style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                <div class="app-card" style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <video class="app-media" muted loop preload="metadata">
+                        <source src="assets/real_world_app/trimmed/sports_short.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <div style="height: 160px; background-color: #f3e5f5; display: flex; justify-content: center; align-items: center; font-size: 4rem;">
                         ⚽
                     </div>
@@ -914,7 +955,8 @@
                 </div>
                 
                 <!-- Application Card 6 -->
-                <div style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                <div class="app-card" style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <img class="app-media" src="assets/real_world_app/autonoumous_safety.jpeg" alt="Autonomous Safety">
                     <div style="height: 160px; background-color: #ede7f6; display: flex; justify-content: center; align-items: center; font-size: 4rem;">
                         🚗
                     </div>
@@ -935,7 +977,10 @@
         <div class="container">
             <p>&copy; 2025 | Northeastern University Augmented Cognition Laboratory</p>
             <p>Contact: <a href="mailto:ostadabbas@ece.neu.edu">ostadabbas@ece.neu.edu</a></p>
-            <p><a href="https://web.northeastern.edu/ostadabbas/" target="_blank">Visit our lab website</a></p>
+            <p class="lab-contact-container">
+                <a href="https://web.northeastern.edu/ostadabbas/" target="_blank">Visit our lab website</a>
+                <img src="assets/group_lab_pic.png" alt="Augmented Cognition Lab Group" class="lab-group-image">
+            </p>
         </div>
     </footer>
     
@@ -950,6 +995,43 @@
             document.querySelector(`#${tabId}`).style.display = 'block';
             document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
         }
+        
+        // Add event listeners for app card videos
+        document.addEventListener('DOMContentLoaded', function() {
+            const appCards = document.querySelectorAll('.app-card');
+            
+            appCards.forEach(card => {
+                const video = card.querySelector('video');
+                if (video) {
+                    // Ensure video is loaded
+                    video.load();
+                    
+                    card.addEventListener('mouseenter', function() {
+                        // Try-catch to handle any potential errors
+                        try {
+                            const playPromise = video.play();
+                            
+                            // Handle the play promise
+                            if (playPromise !== undefined) {
+                                playPromise.catch(error => {
+                                    console.log("Video play error:", error);
+                                });
+                            }
+                        } catch (e) {
+                            console.log("Error playing video:", e);
+                        }
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        // Only pause if the video is actually playing
+                        if (!video.paused) {
+                            video.pause();
+                        }
+                        video.currentTime = 0;
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
