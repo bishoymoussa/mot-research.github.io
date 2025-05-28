@@ -609,14 +609,31 @@
                     
                     <!-- Visual Results Section -->
                     <div style="background-color: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 30px;">
-                        <h4 style="color: var(--main-color); margin-bottom: 20px; text-align: center;">Prolonged Occlusion Handling</h4>
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <video controls style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                                <source src="assets/mote/Prolonged_Occlusions.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                        <h4 style="color: var(--main-color); margin-bottom: 20px; text-align: center;">Visual Tracking Results</h4>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <!-- Prolonged Occlusion Video -->
+                            <div>
+                                <h5 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Prolonged Occlusion Handling</h5>
+                                <video controls style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <source src="assets/mote/Prolonged_Occlusions.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p style="text-align: center; margin-top: 10px; font-size: 0.9rem;">MOTE maintains identity through extended occlusions</p>
+                            </div>
+                            
+                            <!-- Crowded Scene Video -->
+                            <div>
+                                <h5 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Crowded Scene Tracking</h5>
+                                <video controls style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <source src="assets/mote/compressed/MOT17-03-FRCNN-compressed.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p style="text-align: center; margin-top: 10px; font-size: 0.9rem;">MOTE handles multiple partial occlusions in crowded scenes</p>
+                            </div>
                         </div>
-                        <p style="text-align: center;">MOTE excels at maintaining identity through prolonged occlusions, significantly outperforming existing methods.</p>
+                        
+                        <p style="text-align: center;">MOTE excels at maintaining identity through various challenging scenarios, significantly outperforming existing methods.</p>
                     </div>
                     
                     <!-- SportsMOT Results -->
