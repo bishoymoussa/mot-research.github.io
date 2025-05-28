@@ -607,33 +607,42 @@
                     
                     <p style="text-align: center; margin-bottom: 30px;">MOTE was evaluated on the MOT15, MOT17, MOT20, DanceTrack, and SportsMOT datasets, with particular focus on occlusion scenarios.</p>
                     
-                    <!-- Visual Results Section -->
+                    <!-- Visual Results Section with Tabs -->
                     <div style="background-color: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 30px;">
                         <h4 style="color: var(--main-color); margin-bottom: 20px; text-align: center;">Visual Tracking Results</h4>
                         
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                            <!-- Prolonged Occlusion Video -->
-                            <div>
-                                <h5 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Prolonged Occlusion Handling</h5>
-                                <video controls style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                                    <source src="assets/mote/Prolonged_Occlusions.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <p style="text-align: center; margin-top: 10px; font-size: 0.9rem;">MOTE maintains identity through extended occlusions</p>
+                        <!-- Video Selection Tabs -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 20px; border-bottom: 1px solid #eee;">
+                            <div class="video-tab active" onclick="showVideo('occlusion')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid var(--main-color); font-weight: bold; color: var(--main-color); margin: 0 10px;">
+                                Prolonged Occlusion Handling
                             </div>
-                            
-                            <!-- Crowded Scene Video -->
-                            <div>
-                                <h5 style="color: var(--main-color); margin-bottom: 15px; text-align: center;">Crowded Scene Tracking</h5>
-                                <video controls style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                                    <source src="assets/mote/compressed/MOT17-03-FRCNN-compressed.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <p style="text-align: center; margin-top: 10px; font-size: 0.9rem;">MOTE handles multiple partial occlusions in crowded scenes</p>
+                            <div class="video-tab" onclick="showVideo('crowded')" style="padding: 10px 20px; cursor: pointer; border-bottom: 3px solid transparent; margin: 0 10px;">
+                                Crowded Scene Tracking
                             </div>
                         </div>
                         
-                        <p style="text-align: center;">MOTE excels at maintaining identity through various challenging scenarios, significantly outperforming existing methods.</p>
+                        <!-- Video Content Container -->
+                        <div class="video-content-container" style="margin-bottom: 20px;">
+                            <!-- Prolonged Occlusion Video -->
+                            <div id="occlusion-video" class="video-content" style="display: block; text-align: center;">
+                                <video controls style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <source src="assets/mote/Prolonged_Occlusions.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p style="margin-top: 15px;">MOTE maintains identity through extended occlusions, even when objects disappear from view for several seconds.</p>
+                            </div>
+                            
+                            <!-- Crowded Scene Video -->
+                            <div id="crowded-video" class="video-content" style="display: none; text-align: center;">
+                                <video controls style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <source src="assets/mote/compressed/MOT17-03-FRCNN-compressed.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p style="margin-top: 15px;">MOTE effectively handles multiple partial occlusions in crowded scenes with numerous overlapping subjects.</p>
+                            </div>
+                        </div>
+                        
+                        <p style="text-align: center; font-style: italic;">MOTE excels at maintaining identity through various challenging scenarios, significantly outperforming existing methods.</p>
                     </div>
                     
                     <!-- SportsMOT Results -->
@@ -1124,6 +1133,32 @@
             const datasetContents = document.querySelectorAll('.dataset-content');
             datasetContents.forEach(content => content.style.display = 'none');
             document.getElementById(`${datasetId}-content`).style.display = 'block';
+        }
+        
+        // Video tab functionality
+        function showVideo(videoId) {
+            // Pause all videos first
+            document.querySelectorAll('.video-content video').forEach(video => {
+                video.pause();
+            });
+            
+            // Update tab styling
+            const videoTabs = document.querySelectorAll('.video-tab');
+            videoTabs.forEach(tab => tab.classList.remove('active'));
+            videoTabs.forEach(tab => tab.style.borderBottom = '3px solid transparent');
+            videoTabs.forEach(tab => tab.style.fontWeight = 'normal');
+            videoTabs.forEach(tab => tab.style.color = '#333');
+            
+            const activeTab = document.querySelector(`[onclick="showVideo('${videoId}')"]`);
+            activeTab.classList.add('active');
+            activeTab.style.borderBottom = '3px solid var(--main-color)';
+            activeTab.style.fontWeight = 'bold';
+            activeTab.style.color = 'var(--main-color)';
+            
+            // Show selected content
+            const videoContents = document.querySelectorAll('.video-content');
+            videoContents.forEach(content => content.style.display = 'none');
+            document.getElementById(`${videoId}-video`).style.display = 'block';
         }
         
         // Add event listeners for app card videos
