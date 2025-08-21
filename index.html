@@ -482,6 +482,93 @@
             font-size: 0.9em;
         }
     </style>
+    <style>
+        /* CVPR-style minimal overrides */
+        :root { 
+            --main-color: #0969da; /* GitHub blue */
+            --text-color: #111; 
+            --light-bg: #ffffff; 
+        }
+        body { 
+            background: #fff !important; 
+            color: #111 !important; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important; 
+            line-height: 1.7 !important;
+        }
+        .container { max-width: 900px !important; }
+        header { background: #fff !important; color: #111 !important; padding: 30px 0 !important; }
+        header h1 { font-size: 2.2rem !important; margin-bottom: 8px !important; }
+        header p { opacity: 1 !important; }
+        .section { padding: 40px 0 !important; border-bottom: 1px solid #eaecef !important; background: #fff !important; }
+        .section-title { color: #111 !important; font-size: 1.8rem !important; gap: 0 !important; }
+        .section-emoji { display: none !important; }
+
+        /* Subtle, minimal effects allowed */
+        .card, .panel, .results-table table { box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important; }
+        img, video { box-shadow: none !important; }
+
+        /* Links like GitHub Pages */
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Link buttons with emojis (Paper/Poster/Code/HF) */
+        .link-box { display: flex !important; flex-wrap: wrap; gap: 10px !important; margin-top: 12px !important; }
+        .link-card { 
+            display: inline-flex !important; align-items: center; justify-content: center; gap: 8px; 
+            padding: 8px 12px !important; 
+            background: #f6f8fa !important; 
+            border: 1px solid #d0d7de !important; 
+            border-radius: 6px !important; 
+            color: #0969da !important; 
+            box-shadow: 0 1px 0 rgba(0,0,0,0.02) !important;
+            text-align: center !important;
+        }
+        .link-card:hover { background: #eef2f6 !important; text-decoration: none !important; }
+        .link-icon { display: inline !important; font-size: 1.1em !important; }
+        .link-title { display: inline !important; color: #0969da !important; font-weight: 600 !important; }
+        .link-desc { display: none !important; }
+
+        /* CVPR-style tabs: minimal underline nav */
+        .dataset-tabs { display: flex !important; justify-content: center; gap: 8px; border-bottom: 1px solid #eaecef; margin-bottom: 16px; flex-wrap: wrap; }
+        .tab-button, .video-tab, .dataset-tab { 
+            display: inline-block !important; 
+            padding: 8px 12px !important; 
+            border: 0 !important; 
+            background: transparent !important; 
+            color: #57606a !important; 
+            font-weight: 600 !important; 
+            border-bottom: 2px solid transparent !important; 
+            cursor: pointer !important;
+        }
+        .tab-button.active, .video-tab.active, .dataset-tab.active { 
+            color: #111 !important; 
+            border-bottom-color: var(--main-color) !important; 
+        }
+        /* Let inline styles/JS control visibility of contents */
+        .tab-content, .dataset-content, .tab-pane, .video-content { animation: none !important; }
+
+        /* Simplify layout */
+        .content-row { display: block !important; margin: 20px 0 !important; }
+        .text-col, .image-col { padding: 0 !important; min-width: 0 !important; }
+
+        /* Light alternating section background */
+        .section:nth-of-type(even) { background: #fafbfc !important; }
+
+        /* Table style similar to GitHub markdown */
+        .results-table { box-shadow: none !important; }
+        .results-table table { border: 1px solid #d0d7de !important; }
+        .results-table th { background: #f6f8fa !important; color: #111 !important; }
+        .results-table td, .results-table th { border-bottom: 1px solid #d0d7de !important; }
+
+        /* Subtle blockquote */
+        blockquote { border-left: 3px solid #eaecef !important; color: #555 !important; }
+
+        /* Footer minimal */
+        footer { background: #fff !important; color: #57606a !important; border-top: 1px solid #eaecef !important; }
+
+        /* Logo smaller */
+        #aclab-logo { height: 80px !important; width: auto !important; }
+    </style>
 </head>
 <body>
     <header>
@@ -1578,135 +1665,51 @@
         </div>
     </section>
 
-    <script>
-        function showTab(tabName) {
-            // Hide all main tab content
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remove active class from all main tab buttons
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            // Show the selected main tab content
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to the clicked main tab button
-            event.target.classList.add('active');
-        }
-        
-        function showDatasetTab(tabName) {
-            // Hide all dataset tab panes
-            const tabPanes = document.querySelectorAll('.tab-pane');
-            tabPanes.forEach(pane => {
-                pane.classList.remove('active');
-            });
-            
-            // Remove active class from all dataset tab buttons
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show the selected dataset tab pane
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to the clicked dataset tab button
-            event.target.classList.add('active');
-        }
-    </script>
-
-<script>
-    function showTab(tabName) {
-        // Hide all main tab content
-        const tabContents = document.querySelectorAll('.tab-content');
-        tabContents.forEach(tab => {
-            tab.classList.remove('active');
-        });
-        
-        // Remove active class from all main tab buttons
-        const tabButtons = document.querySelectorAll('.tab-button');
-        tabButtons.forEach(button => {
-            button.classList.remove('active');
-        });
-        
-        // Show the selected main tab content
-        document.getElementById(tabName).classList.add('active');
-        
-        // Add active class to the clicked main tab button
-        event.target.classList.add('active');
-    }
-    
-    function showDatasetTab(tabName) {
-        // Hide all dataset tab panes
-        const tabPanes = document.querySelectorAll('#uni-results .tab-pane');
-        tabPanes.forEach(pane => {
-            pane.classList.remove('active');
-        });
-        
-        // Remove active class from all dataset tab buttons
-        const tabBtns = document.querySelectorAll('#uni-results .tab-btn');
-        tabBtns.forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        // Show the selected dataset tab pane
-        document.getElementById(tabName).classList.add('active');
-        
-        // Add active class to the clicked dataset tab button
-        event.target.classList.add('active');
-    }
-    
-    function showVisualizationTab(tabName) {
-        // Hide all visualization tab panes
-        const tabPanes = document.querySelectorAll('#uni-visualizations .tab-pane');
-        tabPanes.forEach(pane => {
-            pane.classList.remove('active');
-        });
-        
-        // Remove active class from all visualization tab buttons
-        const tabBtns = document.querySelectorAll('#uni-visualizations .tab-btn');
-        tabBtns.forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        // Show the selected visualization tab pane
-        document.getElementById(tabName).classList.add('active');
-        
-        // Add active class to the clicked visualization tab button
-        event.target.classList.add('active');
-    }
-</script>
-
-</body>
-    
     <section id="lapa" class="section">
         <div class="container">
             <h2 class="section-title"><span class="section-emoji">👀</span> Look Around and Pay Attention (LAPA) <img src="assets/lapa/lapa_logo.png" alt="LAPA Logo" style="height: 50px; vertical-align: middle; margin-left: 10px;"></h2>
+            
+            <!-- Overview and main method visual -->
             <div class="content-row">
                 <div class="text-col">
-                    <p>LAPA is our current research focus for the current research, introducing a novel attention mechanism for multi-object tracking that combines local and global context information to improve tracking accuracy.</p>
-                    
-                    <p>Key innovations in LAPA include:</p>
+                    <p>LAPA (Look Around and Pay Attention) is a transformer-based, multi-camera point tracking framework that jointly reasons across views and time. By encoding geometric priors into attention, LAPA maintains consistent tracks through occlusions and complex motion.</p>
+                    <p><strong>Key ideas:</strong></p>
                     <ul class="key-points">
-                        <li>Dual-attention mechanism for context awareness</li>
-                        <li>Long-range dependency modeling</li>
-                        <li>Adaptive feature aggregation</li>
+                        <li>Geometry-aware cross-view attention</li>
+                        <li>End-to-end 2D-to-3D tracking pipeline</li>
+                        <li>Robust to occlusions via multi-view reasoning</li>
                     </ul>
-                    
-                    <p><strong>Current Status:</strong> Under development</p>
+                    <p><strong>Status:</strong> Under development</p>
                 </div>
                 <div class="image-col">
-                    <img src="assets/lapa/cross_view.png" alt="LAPA concept illustration" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <img src="assets/lapa/lapa_model.png" alt="LAPA architecture" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                 </div>
             </div>
-            <div style="text-align: center; margin: 30px 0;">
-                <img src="assets/lapa/lapa_concept.png" alt="Preliminary LAPA results" style="width: 80%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+
+            <!-- LAPA Videos with tabs -->
+            <div id="lapa-videos" style="margin-top: 24px; background: white; border-radius: 10px; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.06);">
+                <div style="display: flex; gap: 16px; border-bottom: 1px solid #eee; margin-bottom: 12px;">
+                    <button class="tab-btn active" onclick="showLocalTab('lapa-videos','lapa-demo')">Interactive Demo</button>
+                    <button class="tab-btn" onclick="showLocalTab('lapa-videos','lapa-recon')">Example Reconstruction</button>
+                </div>
+                <div class="tab-pane active" id="lapa-demo">
+                    <video controls preload="metadata" style="width: 100%; border-radius: 8px; background: #000;">
+                        <source src="assets/lapa/converted_videos/lapa_interactive_demo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="tab-pane" id="lapa-recon" style="display: none;">
+                    <video controls preload="metadata" style="width: 100%; border-radius: 8px; background: #000;">
+                        <source src="assets/lapa/batch_reconstruction_basketball_combo_01/comprehensive_tracks_video_web.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div style="margin-top: 10px; text-align: center;">
+                        <img src="assets/lapa/batch_reconstruction_basketball_combo_01/all_tracks_3d_enhanced.gif" alt="LAPA reconstruction GIF" style="width: 100%; height: auto; border-radius: 8px;">
+                    </div>
+                </div>
             </div>
+
+            <!-- Links -->
             <div class="link-box">
                 <a href="#" class="link-card">
                     <div class="link-icon">🚧</div>
@@ -1904,102 +1907,120 @@
     </footer>
     
     <script>
-        // Tab functionality
-        function showTab(tabId) {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabButtons.forEach(button => button.classList.remove('active'));
-            tabContents.forEach(content => content.style.display = 'none');
-            
-            document.querySelector(`#${tabId}`).style.display = 'block';
-            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
-        }
-        
-        // Dataset tab functionality
-        function showDataset(datasetId) {
-            // Update tab styling
-            const datasetTabs = document.querySelectorAll('.dataset-tab');
-            datasetTabs.forEach(tab => tab.classList.remove('active'));
-            datasetTabs.forEach(tab => tab.style.borderBottom = '3px solid transparent');
-            datasetTabs.forEach(tab => tab.style.fontWeight = 'normal');
-            datasetTabs.forEach(tab => tab.style.color = '#333');
-            
-            const activeTab = document.querySelector(`[onclick="showDataset('${datasetId}')"]`);
-            activeTab.classList.add('active');
-            activeTab.style.borderBottom = '3px solid var(--main-color)';
-            activeTab.style.fontWeight = 'bold';
-            activeTab.style.color = 'var(--main-color)';
-            
-            // Show selected content
-            const datasetContents = document.querySelectorAll('.dataset-content');
-            datasetContents.forEach(content => content.style.display = 'none');
-            document.getElementById(`${datasetId}-content`).style.display = 'block';
-        }
-        
-        // Video tab functionality
-        function showVideo(videoId) {
-            // Pause all videos first
-            document.querySelectorAll('.video-content video').forEach(video => {
-                video.pause();
-            });
-            
-            // Update tab styling
-            const videoTabs = document.querySelectorAll('.video-tab');
-            videoTabs.forEach(tab => tab.classList.remove('active'));
-            videoTabs.forEach(tab => tab.style.borderBottom = '3px solid transparent');
-            videoTabs.forEach(tab => tab.style.fontWeight = 'normal');
-            videoTabs.forEach(tab => tab.style.color = '#333');
-            
-            const activeTab = document.querySelector(`[onclick="showVideo('${videoId}')"]`);
-            activeTab.classList.add('active');
-            activeTab.style.borderBottom = '3px solid var(--main-color)';
-            activeTab.style.fontWeight = 'bold';
-            activeTab.style.color = 'var(--main-color)';
-            
-            // Show selected content
-            const videoContents = document.querySelectorAll('.video-content');
-            videoContents.forEach(content => content.style.display = 'none');
-            document.getElementById(`${videoId}-video`).style.display = 'block';
-        }
-        
-        // Add event listeners for app card videos
-        document.addEventListener('DOMContentLoaded', function() {
-            // App card videos functionality
-            const appCards = document.querySelectorAll('.app-card');
-            
-            appCards.forEach(card => {
-                const video = card.querySelector('video');
-                if (video) {
-                    // Ensure video is loaded
-                    video.load();
-                    
-                    card.addEventListener('mouseenter', function() {
-                        // Try-catch to handle any potential errors
-                        try {
-                            const playPromise = video.play();
-                            
-                            // Handle the play promise
-                            if (playPromise !== undefined) {
-                                playPromise.catch(error => {
-                                    console.log("Video play error:", error);
-                                });
-                            }
-                        } catch (e) {
-                            console.log("Error playing video:", e);
-                        }
-                    });
-                    
-                    card.addEventListener('mouseleave', function() {
-                        // Only pause if the video is actually playing
-                        if (!video.paused) {
-                            video.pause();
-                        }
-                        video.currentTime = 0;
-                    });
-                }
-            });
+      // Scoped, CVPR-style tabs
+      function showTab(tabId) {
+        const btn = event.currentTarget || event.target;
+        const section = btn.closest('.section') || document;
+        // Hide only within this section
+        section.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        section.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+        const content = section.querySelector('#' + tabId) || document.getElementById(tabId);
+        if (content) content.style.display = 'block';
+        btn.classList.add('active');
+      }
+
+      function showDataset(datasetId) {
+        const btn = event.currentTarget || event.target;
+        const wrap = btn.closest('.section') || document;
+        wrap.querySelectorAll('.dataset-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        wrap.querySelectorAll('.dataset-content').forEach(c => c.style.display = 'none');
+        const pane = wrap.querySelector('#' + datasetId + '-content') || document.getElementById(datasetId + '-content');
+        if (pane) pane.style.display = 'block';
+      }
+
+      function showVideo(videoId) {
+        const btn = event.currentTarget || event.target;
+        const wrap = btn.closest('.section') || document;
+        wrap.querySelectorAll('.video-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        // Pause any videos in wrap
+        wrap.querySelectorAll('.video-content video').forEach(v => v.pause());
+        wrap.querySelectorAll('.video-content').forEach(c => c.style.display = 'none');
+        const pane = wrap.querySelector('#' + videoId + '-video') || document.getElementById(videoId + '-video');
+        if (pane) pane.style.display = 'block';
+      }
+
+      // Generic local tab switcher operating within a container id
+      function showLocalTab(containerId, targetId) {
+        const box = document.getElementById(containerId);
+        if (!box) return;
+        // buttons
+        box.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        // mark clicked active
+        const btn = event.currentTarget || event.target;
+        if (btn) btn.classList.add('active');
+        // panes
+        box.querySelectorAll('.tab-pane').forEach(p => {
+          // pause any videos inside
+          p.querySelectorAll('video').forEach(v => { try { v.pause(); } catch(e){} });
+          p.style.display = 'none';
+          p.classList.remove('active');
         });
+        const pane = box.querySelector('#' + targetId);
+        if (pane) { pane.style.display = 'block'; pane.classList.add('active'); }
+      }
+
+      // UniTrack dataset tabs (Results section)
+      function showDatasetTab(id) {
+        const btn = event.currentTarget || event.target;
+        const box = btn.parentElement && btn.parentElement.parentElement ? btn.parentElement.parentElement : (btn.closest('#uni-results') || document);
+        box.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        box.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+        const pane = box.querySelector('#' + id);
+        if (pane) pane.style.display = 'block';
+      }
+
+      // UniTrack visualization tabs
+      function showVisualizationTab(id) {
+        const btn = event.currentTarget || event.target;
+        const box = btn.parentElement && btn.parentElement.parentElement ? btn.parentElement.parentElement : (btn.closest('#uni-visualizations') || document);
+        box.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Pause videos in all panes
+        box.querySelectorAll('.tab-pane video').forEach(v => { try { v.pause(); } catch(e){} });
+        box.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+        const pane = box.querySelector('#' + id);
+        if (pane) pane.style.display = 'block';
+      }
+
+      // Initialize defaults on load: open Overview in each section and first dataset/video tabs
+      document.addEventListener('DOMContentLoaded', function() {
+        // For each section with tab buttons, click the first (Overview)
+        document.querySelectorAll('.section').forEach(section => {
+          const firstMain = section.querySelector('.tab-button');
+          if (firstMain) {
+            firstMain.click();
+          }
+          // Dataset tabs
+          const firstDataset = section.querySelector('.dataset-tab');
+          if (firstDataset) {
+            firstDataset.click();
+          }
+          // Video tabs
+          const firstVideo = section.querySelector('.video-tab');
+          if (firstVideo) {
+            firstVideo.click();
+          }
+        });
+
+        // App card video hover behavior
+        const appCards = document.querySelectorAll('.app-card');
+        appCards.forEach(card => {
+          const video = card.querySelector('video');
+          if (video) {
+            video.load();
+            card.addEventListener('mouseenter', function() {
+              try { const p = video.play(); if (p) p.catch(()=>{}); } catch(e) {}
+            });
+            card.addEventListener('mouseleave', function() {
+              if (!video.paused) video.pause();
+              video.currentTime = 0;
+            });
+          }
+        });
+      });
     </script>
 </body>
 </html>
